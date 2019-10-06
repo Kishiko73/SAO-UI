@@ -24,7 +24,7 @@ displayName="SAO UI" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks to thejackimonster for the initial mod and Wehavecookies for good modding tutorials. Not forgetting the anime sao. Thanks also to forge for the modding api" #optional
+credits="Thanks to thejackimonster for the initial mod and [Wehavecookies56, McJty] for good modding tutorials. Not forgetting the anime sao. Thanks also to forge for the modding api" #optional
 # A text field displayed in the mod UI
 authors=["Kishiko73"] #optional
 # The description text for the mod (multi line!) (#mandatory)
