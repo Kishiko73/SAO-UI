@@ -6,9 +6,9 @@ import kishiko73.sao.ui.SAOUIMod;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TranslationTextComponent;
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -61,5 +61,4 @@ public class SAOUIDeathScreen extends Screen {
                     (int)(height / 2 / sf - (deathButton.isHovered() ? 5 : 4)), 0xFFFFFF);
         } GlStateManager.popMatrix();
     }
-
 }

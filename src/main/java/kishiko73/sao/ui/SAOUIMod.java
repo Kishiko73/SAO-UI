@@ -4,8 +4,10 @@ import kishiko73.sao.ui.events.SAOUIEventHandler;
 import kishiko73.sao.ui.proxy.ClientProxy;
 import kishiko73.sao.ui.proxy.IProxy;
 import kishiko73.sao.ui.proxy.ServerProxy;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,6 +22,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -77,27 +80,17 @@ public class SAOUIMod
         LOGGER.info("Got IMC {}", event.getIMCStream().map(m -> m.getMessageSupplier().get())
                 .collect(Collectors.toList()));
     }
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
-        }
     }
 
     private static boolean uiEnabled = true;
 
     public static boolean uiEnabled() {
         return uiEnabled;
+    }
+    public static boolean uiToggleEnabled() {
+        return uiEnabled = !uiEnabled;
     }
 }
