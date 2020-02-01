@@ -19,5 +19,4 @@ public class ServerProxy implements IProxy {
     public PlayerEntity getClientPlayer() {
         throw new IllegalStateException("Only run this on the client!");
     }
-
 }

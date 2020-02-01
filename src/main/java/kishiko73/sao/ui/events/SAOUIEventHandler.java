@@ -5,14 +5,15 @@ import kishiko73.sao.ui.gui.SAOUIDeathScreen;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.client.gui.screen.IngameMenuScreen;
 import net.minecraft.client.gui.screen.inventory.CraftingScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.gui.screen.inventory.MerchantScreen;
-import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -77,5 +78,13 @@ public class SAOUIEventHandler {
     @SubscribeEvent
     public void onInteractEntity(PlayerInteractEvent.EntityInteract event) {
         System.out.println("entity");
+    }
+
+    @SubscribeEvent
+    public void onRenderGameOverlay(RenderGameOverlayEvent.Pre event) {
+        if (Minecraft.getInstance().currentScreen instanceof SAOUIDeathScreen &&
+                event.getType() == RenderGameOverlayEvent.ElementType.CROSSHAIRS) {
+            event.setCanceled(true);
+        }
     }
 }

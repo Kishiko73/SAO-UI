@@ -9,15 +9,17 @@ import net.minecraft.client.gui.widget.button.Button;
 public class SAOUIButton extends Button {
 
     public SAOUIButton(int x, int y, IPressable handler) {
-        this(x, y, 20, 20, handler);
+        super(x, y, 20, 20, "", handler);
     }
-
     public SAOUIButton(int x, int y, int w, int h, IPressable handler) {
         super(x, y, w, h, "", handler);
     }
+    public SAOUIButton(int x, int y, int w, int h, String text, IPressable handler) {
+        super(x, y, w, h, text, handler);
+    }
 
     public void updateHover(int mouseX, int mouseY) {
-        if (visible)
-            isHovered = x <= mouseX && mouseX <= x + width && y <= mouseY && mouseY <= y + height;
+        isHovered = visible && (x <= mouseX && mouseX <= x + width &&
+                                y <= mouseY && mouseY <= y + height);
     }
 }

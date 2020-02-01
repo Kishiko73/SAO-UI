@@ -1,18 +1,13 @@
 package kishiko73.sao.ui;
 
 import kishiko73.sao.ui.events.SAOUIEventHandler;
-import kishiko73.sao.ui.proxy.ClientProxy;
-import kishiko73.sao.ui.proxy.IProxy;
-import kishiko73.sao.ui.proxy.ServerProxy;
+import kishiko73.sao.ui.proxy.*;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -30,8 +25,7 @@ import java.util.stream.Collectors;
 
 @OnlyIn(Dist.CLIENT)
 @Mod(SAOUIMod.MODID) // The value here should match an entry in the META-INF/mods.toml file
-public class SAOUIMod
-{
+public class SAOUIMod {
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
     // Directly reference a log4j logger.
@@ -68,11 +62,12 @@ public class SAOUIMod
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        proxy.init();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+       // InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event) {
@@ -83,6 +78,7 @@ public class SAOUIMod
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
+        proxy.init();
     }
 
     private static boolean uiEnabled = true;
