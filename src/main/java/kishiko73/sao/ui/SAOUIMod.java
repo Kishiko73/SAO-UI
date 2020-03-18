@@ -3,8 +3,6 @@ package kishiko73.sao.ui;
 import kishiko73.sao.ui.events.SAOUIEventHandler;
 import kishiko73.sao.ui.proxy.*;
 
-import net.minecraft.block.Blocks;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -55,8 +53,8 @@ public class SAOUIMod {
 
     private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        //LOGGER.info("HELLO FROM PREINIT");
+        //LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -78,7 +76,6 @@ public class SAOUIMod {
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
-        proxy.init();
     }
 
     private static boolean uiEnabled = true;

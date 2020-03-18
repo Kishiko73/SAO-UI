@@ -47,6 +47,6 @@ My implementation of the SAO UI mod initially created by thejackimonster
 [[dependencies.kiko-sao-ui]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.4]"
+    versionRange="[1.15.1]"
     ordering="NONE"
     side="BOTH"

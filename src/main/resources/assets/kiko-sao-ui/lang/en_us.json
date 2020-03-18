@@ -1,3 +1,6 @@
 {
-    "gui.kiko-sao-ui.respawn_keybind": "Press key %1$s to respawn"
+    "key.kiko-sao-ui.hotkeys": "SAO UI Mod",
+    "key.kiko-sao-ui.respawn": "Respawn",
+    "gui.kiko-sao-ui.respawn_keybind": "Press key %1$s to respawn",
+    "gui.kiko-sao-ui.noteBlockScreen.title": "NoteBlock GUI"
 }
